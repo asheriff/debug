@@ -173,10 +173,14 @@ function dynamic(flag) {
  */
 
 function enable(namespaces) {
-  able.parse(namespaces).forEach(function (ns) {
+  var ns;
+  var names = able.parse(namespaces);
+
+  for (var i=0, c=names.length; i<c; i++) {
+    ns = names[i];
     if ('-' == ns[0]) able.disable(ns.slice(1));
     else              able.enable(ns);
-  });
+  }
 
   exports.save();
 }
@@ -188,10 +192,14 @@ function enable(namespaces) {
  */
 
 function disable(namespaces) {
-  able.parse(namespaces).forEach(function (ns) {
+  var ns;
+  var names = able.parse(namespaces);
+
+  for (var i=0, c=names.length; i<c; i++) {
+    ns = names[i];
     if ('-' == ns[0]) ns = ns.slice(1);
     able.disable(ns);
-  });
+  }
 
   exports.save();
 }
