@@ -52,23 +52,7 @@ describe('enable/disable feature', function () {
 
   describe('.parse(str)', function () {
     it('should respect either white-space or comma separated values', function () {
-      able.parse('a,b c  , d    e');
-      assert(able.enabled('a'));
-      assert(able.enabled('b'));
-      assert(able.enabled('c'));
-      assert(able.enabled('d'));
-      assert(able.enabled('e'));
-    });
-
-    it('should treat hyphen prefixs as disabled', function () {
-      able.enable('*');
-      able.parse('-b,-c,  -d  -e');
-      assert(able.enabled('a'));
-      assert(!able.enabled('b'));
-      assert(!able.enabled('c'));
-      assert(!able.enabled('d'));
-      assert(!able.enabled('e'));
-      assert(able.enabled('f'));
+      assert.deepEqual(able.parse('a,b c  , d    e'), 'abcde'.split(''));
     });
   });
 
@@ -90,6 +74,17 @@ describe('enable/disable feature', function () {
       assert(!able.enabled('express'));
       able.enable('express');
       assert(able.enabled('express'));
+    });
+
+    xit('should treat hyphen prefixs as disabled', function () {
+      able.enable('*');
+      able.enable('-b,-c,  -d  -e');
+      assert(able.enabled('a'));
+      assert(!able.enabled('b'));
+      assert(!able.enabled('c'));
+      assert(!able.enabled('d'));
+      assert(!able.enabled('e'));
+      assert(able.enabled('f'));
     });
   });
 
