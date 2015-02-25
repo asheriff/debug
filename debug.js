@@ -1,3 +1,4 @@
+require('es5-shim');
 
 /**
  * Enabled/disabled status management
