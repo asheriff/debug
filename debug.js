@@ -19,6 +19,7 @@ exports.dynamic = dynamic;
 exports.enable = enable;
 exports.disable = disable;
 exports.enabled = able.enabled;
+exports.filters = able.filters;
 
 
 /**

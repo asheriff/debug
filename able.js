@@ -5,6 +5,11 @@
 var enabled = [];
 var disabled = [];
 
+exports.filters = {
+  enabled: enabled,
+  disabled: disabled
+};
+
 /**
  * Checks if the specified `ns` is enabled.
  *
