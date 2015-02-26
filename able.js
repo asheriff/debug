@@ -117,14 +117,16 @@ exports.disable = function (ns) {
  */
 
 function find(arr, ns, regex) {
-  var ret = -1;
-  arr.some(function (item, x) {
+  var item;
+
+  for (var i=0, c=arr.length; i<c; i++) {
+    item = arr[i];
     if (regex ? item.regex.test(ns) : ns === item.string) {
-      ret = x;
-      return true;
+      return i;
     }
-  });
-  return ret;
+  }
+
+  return -1;
 }
 
 /**
